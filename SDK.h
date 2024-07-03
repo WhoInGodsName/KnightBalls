@@ -1,0 +1,66 @@
+#pragma once
+#include "string.h"
+#include "HelperFunctions.h"
+
+struct PlayerData {
+
+		 char playerName[0x8];
+		 bool needHorse;
+		 float dontDoActionsFor;
+		 float currentSpread;
+		 float sinceAbilityUse;
+		 bool isReloading;
+		 float reloadingProgress;
+		 float currentSlow;
+		 int totalAmmo;
+		 int bulletsLoaded;
+		 int currentBombs;
+		 int jumps;
+		 int jumpsUsed;
+		 char refs[0x8];
+		 float sinceJump;
+		 float sinceGroundedOrJumped;
+		 float sinceGrounded;
+		 char groundTransform[0x8];
+		 Vector3 groundNormal;
+		 Vector3 groundPos;
+		 bool isGrounded;
+		 bool isCrouching;
+		 Vector3 positionDelta;
+		 Vector3 lastPos;
+		 float groundedFor;
+		 float currentHealthPercentage;
+		 bool inFarm;
+		 char currentSeat[0x8];
+		 char currentHeldObject[0x4];
+		 int ColourPrimary;
+		 int ColourSecondary;
+		 int armorIndex;
+		 char causeOfDeath[0x4];
+		 bool playerActive;
+		 char playerRange[0x4];
+		 int framesCulled;
+		 float iceSpeedM;
+		 bool groundedThisFrame;
+		 float height;
+		 bool isDriver;
+		 float sinceDealDamage;
+		 bool isGhost;
+		 int currentBandage;
+		 bool isChanneling;
+		 bool beingChannelled;
+		 float channelProgress;
+		 float cancelChannelProgress;
+		 char channelActionName[0x8];
+		 float speedM;
+		 char belovedHorse[0x8];
+		 bool isChatting;
+		 char currentChatMessage[0x8];
+		 bool allowTK;
+		 bool isCharging;
+		 float currentCharge;
+		 int framesSinceCharging;
+		 float currentIceTime;
+		 char dataStrings[0x8];
+		 //GameObject currentPing;
+};
