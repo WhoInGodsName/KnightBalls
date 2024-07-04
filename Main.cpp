@@ -187,7 +187,7 @@ int WINAPI main()
 	while (true) {
 		Sleep(50);
 
-		printf("%d", GetActors(gameAssembly));
+		printf("%d\n", GetActors(gameAssembly));
 
 
 		if (GetAsyncKeyState(VK_NUMPAD0) & 1) {
