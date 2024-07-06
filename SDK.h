@@ -86,22 +86,76 @@ struct PlayerData {
 	char dataStrings[0x8];
 	//GameObject currentPing;
 };
-
+struct PlayerStatsEntry {
+	char pad[0x10];
+	float baseValue;
+	float multiplier;
+	float defaultBaseValue;
+	float defaultMultiplier;
+};
+struct PlayerStats {
+	char pad[0x10];
+	struct PlayerStatsEntry* Health;
+	struct PlayerStatsEntry* LifeSteal;
+	struct PlayerStatsEntry* Speed;
+	struct PlayerStatsEntry* AbilityCooldown;
+	struct PlayerStatsEntry* FireRate;
+	struct PlayerStatsEntry* FireRateToAutoM;
+	struct PlayerStatsEntry* Spread;
+	struct PlayerStatsEntry* ReloadSpeed;
+	struct PlayerStatsEntry* AutoReloadDelay;
+	struct PlayerStatsEntry* Ammo;
+	struct PlayerStatsEntry* NrOfProjectiles;
+	struct PlayerStatsEntry* Damage;
+	struct PlayerStatsEntry* ProjectileSpeed;
+	struct PlayerStatsEntry* ProjectileSpeedMax;
+	struct PlayerStatsEntry* ShootChargeUpTime;
+	struct PlayerStatsEntry* ProjectileBounces;
+	struct PlayerStatsEntry* BombFuseTime;
+	struct PlayerStatsEntry* AmmoConsumption;
+	struct PlayerStatsEntry* MinRange;
+	struct PlayerStatsEntry* MaxRange;
+	struct PlayerStatsEntry* MaxRangeDamageMultiplier;
+};
 struct Player {
-	char pad[0x40];
+	char pad1[0x18];
+	struct PlayerStats* stats;
+	char pad[0x20];
 	struct Farm* enteredFarms;
 	char pad2[0x20];
 	struct PlayerData* data;
 	struct PlayerRefs* refs;
 };
 
+struct Pl_Movement {
+	char pad[0x18];
+	struct Player* player;
+	float jumpForce;
+	float gravity;
+	float drag;
+	float airControl;
+	char standCurve[0x4];
+	float standForce;
+	float standYDrag;
+	float rayL;
+	char rig[0x8];
+	char input[0x8];
+	char mask[0x4];
+	float rot;
+	float movementSpeedM;
+	Vector3 lastPos;
+	float slopeM;
+	char rays[0x8];
+	char landAction[0x8];
+	char jumpAction[0x8];
+};
 
 struct PlayerRefs {
 
 	char pad[0x30];
 	struct Player* player;
-	/*public Pl_Movement movement;
-	public PlayerCameraYRotation cameraRot;
+	struct Pl_Movement* movement;
+	/*public PlayerCameraYRotation cameraRot;
 	public PhotonView view;
 	public Pl_Holding holding;
 	public Collider mainCollider;
@@ -117,6 +171,7 @@ struct PlayerRefs {
 	internal Pl_Chanelling channeling;
 	internal Throwing throwing;*/
 };
+
 
 
 

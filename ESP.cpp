@@ -28,9 +28,10 @@ uintptr_t GetActors(uintptr_t gameAssembly) {
 	}
 	  
 	auto localPlayer = reinterpret_cast<Player*>(local_player);
-	//auto playerData = reinterpret_cast<PlayerData*>(localPlayer->data);
+	localPlayer->refs->movement->jumpForce = 100;
+	localPlayer->stats->AmmoConsumption->baseValue = 0;
+	localPlayer->stats->FireRate->baseValue = 0;
 	
-	//auto farmList = reinterpret_cast<Farm*>(localPlayer->enteredFarms);
 	return localPlayer->enteredFarms->tier;
 }
 
