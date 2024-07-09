@@ -15,6 +15,7 @@
 #endif
 
 uintptr_t player_arr[] = {0xB8, 0x0};
+Player* localPlayer;
 
 uintptr_t GetActors(uintptr_t gameAssembly) {
 
@@ -27,7 +28,7 @@ uintptr_t GetActors(uintptr_t gameAssembly) {
 		local_player = *(uintptr_t*)(local_player + player_arr[i]);
 	}
 	  
-	auto localPlayer = reinterpret_cast<Player*>(local_player);
+	localPlayer = reinterpret_cast<Player*>(local_player);
 	localPlayer->refs->movement->jumpForce = 100;
 	localPlayer->stats->AmmoConsumption->baseValue = 0;
 	localPlayer->stats->FireRate->baseValue = 0;

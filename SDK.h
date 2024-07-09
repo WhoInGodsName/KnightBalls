@@ -4,6 +4,58 @@
 #include <list>
 
 
+struct Horse {
+	char pad[0x18];
+		bool localControl;
+		char seats[0x8];
+		char rig[0x8];
+		char view[0x8];
+		char mask[0x4];
+		Vector2 movementInput;
+		Vector3 lookDirection;
+		float speed;
+		float gravity;
+		float drag;
+		float sideDrag;
+		float sideDragDrift;
+		float velRot;
+		float angularDrag;
+		float upHelp;
+		float forwardRot;
+		float rayLength;
+		char rayTrans[0x8];
+		float standForce;
+		char standCurve[0x8];
+		bool isGrounded;
+		char driftPart1[0x8];
+		char driftPart2[0x8];
+		char lines[0x8];
+		char rings[0x8];
+		char burst[0x8];
+		char smallBurst[0x8];
+		char smallLines[0x8];
+		char horseHead[0x8];
+		float currentLean;
+		char anim[0x8];
+		Vector3 startPos;
+		int driftLevel;
+		bool isEating;
+		Vector3 lastRoadPos;
+		float sinceRider;
+		float sinceDrift;
+		float speedBoost;
+		int drift;
+		float requestT;
+		bool royalGrass;
+};
+
+struct Seat {
+
+		struct Horse* horse;
+		char seatPos[0x8];
+		char occupant[0x8];
+		int seatID;
+};
 
 struct Farm {
 	char pad[0x18];
@@ -155,13 +207,13 @@ struct PlayerRefs {
 	char pad[0x30];
 	struct Player* player;
 	struct Pl_Movement* movement;
-	/*public PlayerCameraYRotation cameraRot;
-	public PhotonView view;
-	public Pl_Holding holding;
-	public Collider mainCollider;
+	/*PlayerCameraYRotation cameraRot;
+	PhotonView view;
+	Pl_Holding holding;
+	Collider mainCollider;
 	internal Pl_Riding riding;
-	public Transform horsePivot;
-	public Transform rightHand;
+	Transform horsePivot;
+	Transform rightHand;
 	internal Gun gun;
 	internal Pl_Items items;
 	internal SyncPlayerMovement syncing;
