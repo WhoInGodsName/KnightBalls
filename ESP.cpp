@@ -25,15 +25,28 @@ uintptr_t GetActors(uintptr_t gameAssembly) {
 
 	local_player = base;
 	for (int i = 0; i < array_size; i++) {
-		local_player = *(uintptr_t*)(local_player + player_arr[i]);
+		if ((uintptr_t*)local_player != nullptr) {
+			local_player = *(uintptr_t*)(local_player + player_arr[i]);
+		}
+		
 	}
 	  
 	localPlayer = reinterpret_cast<Player*>(local_player);
-	localPlayer->refs->movement->jumpForce = 100;
-	localPlayer->stats->AmmoConsumption->baseValue = 0;
-	localPlayer->stats->FireRate->baseValue = 0;
+	if (localPlayer != NULL) {
+		localPlayer->refs->movement->jumpForce = 300;
+		localPlayer->stats->AmmoConsumption->baseValue = 0;
+		localPlayer->stats->FireRate->baseValue = 0;
+		localPlayer->refs->movement->movementSpeedM = 40;
+
+		localPlayer->data->belovedHorse->localControl = true;
+		auto horse = localPlayer->data->belovedHorse->speed = 300;
+
+		return localPlayer->data->belovedHorse->gravity;
+	}
 	
-	return localPlayer->enteredFarms->tier;
+	//localPlayer->data->speedM = 3;
+	
+	return 0;
 }
 
 

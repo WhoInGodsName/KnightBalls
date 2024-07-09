@@ -5,14 +5,14 @@
 
 
 struct Horse {
-	char pad[0x18];
+		char pad[0x18];
 		bool localControl;
 		char seats[0x8];
 		char rig[0x8];
 		char view[0x8];
 		char mask[0x4];
-		Vector2 movementInput;
-		Vector3 lookDirection;
+		char movementInput[0xC];
+		char lookDirection[0xC];
 		float speed;
 		float gravity;
 		float drag;
@@ -50,7 +50,7 @@ struct Horse {
 };
 
 struct Seat {
-
+		char pad[0x10];
 		struct Horse* horse;
 		char seatPos[0x8];
 		char occupant[0x8];
@@ -79,11 +79,11 @@ struct Farm {
 struct PlayerData {
 
 	char playerName[0x18];
-	bool needHorse;
+	char needHorse[0x4];
 	float dontDoActionsFor;
 	float currentSpread;
 	float sinceAbilityUse;
-	bool isReloading;
+	char isReloading[0x4];
 	float reloadingProgress;
 	float currentSlow;
 	int totalAmmo;
@@ -96,12 +96,12 @@ struct PlayerData {
 	float sinceGroundedOrJumped;
 	float sinceGrounded;
 	char groundTransform[0x8];
-	Vector3 groundNormal;
-	Vector3 groundPos;
-	bool isGrounded;
-	bool isCrouching;
-	Vector3 positionDelta;
-	Vector3 lastPos;
+	char groundNormal[0xC];
+	char groundPos[0xC];
+	char isGrounded[0x4];
+	char isCrouching[0x4];
+	char positionDelta[0xC];
+	char lastPos[0xC];
 	float groundedFor;
 	float currentHealthPercentage;
 	bool inFarm;
@@ -127,7 +127,7 @@ struct PlayerData {
 	float cancelChannelProgress;
 	char channelActionName[0x8];
 	float speedM;
-	char belovedHorse[0x8];
+	struct Horse* belovedHorse;
 	bool isChatting;
 	char currentChatMessage[0x8];
 	bool allowTK;
