@@ -2,6 +2,7 @@
 #include <windows.h>
 #include <cstdio>
 #include "ESP.h"
+#include "Menu.h"
 
 #include "MinHook/MinHook.h"
 #if _WIN64 
@@ -11,6 +12,7 @@
 #endif
 
 //something
+
 
 #include "ImGui/imgui.h"
 #include "ImGui/imgui_impl_win32.h"
@@ -122,8 +124,7 @@ static long __stdcall detour_present(IDXGISwapChain* p_swap_chain, UINT sync_int
 
 	/* MAIN MOD MENU */
 	//ImGui::ShowDemoWindow();
-	ImGui::Begin("Knights Balls");
-	ImGui::End();
+	MyMenu();
 
 
 

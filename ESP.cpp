@@ -32,21 +32,31 @@ uintptr_t GetActors(uintptr_t gameAssembly) {
 	}
 	  
 	localPlayer = reinterpret_cast<Player*>(local_player);
-	if (localPlayer != NULL) {
-		localPlayer->refs->movement->jumpForce = 300;
-		localPlayer->stats->AmmoConsumption->baseValue = 0;
-		localPlayer->stats->FireRate->baseValue = 0;
-		localPlayer->refs->movement->movementSpeedM = 40;
-
-		localPlayer->data->belovedHorse->localControl = true;
-		auto horse = localPlayer->data->belovedHorse->speed = 300;
-
-		return localPlayer->data->belovedHorse->gravity;
-	}
 	
-	//localPlayer->data->speedM = 3;
 	
 	return 0;
+}
+
+void ToggleFireRate() {
+	if (localPlayer != nullptr) {
+		localPlayer->stats->FireRate->baseValue = 0;		
+		localPlayer->stats->AmmoConsumption->baseValue = 0;
+	}
+}
+
+void SpaceJump() {
+	if (localPlayer != nullptr) {
+		localPlayer->refs->movement->jumpForce = 300;
+	}
+}
+
+void HorseSpeed() {
+	if (localPlayer != nullptr) {
+		if (localPlayer->data->belovedHorse != nullptr) {
+			localPlayer->data->belovedHorse->localControl = true;
+			auto horse = localPlayer->data->belovedHorse->speed = 300;
+		}
+	}
 }
 
 
